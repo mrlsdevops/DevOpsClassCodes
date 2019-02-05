@@ -5,8 +5,8 @@ pipeline {
         stage ('compile') {
 
             steps {
-                WithMaven(maven : 'mymaven') {
-                    sh 'mvn clean compile'
+                environment(maven : 'mymaven') {
+                    sh 'compile'
             
                  }
             }
@@ -16,7 +16,7 @@ pipeline {
 
             steps {
                 WithMaven(maven : 'mymaven') {
-                    sh 'mvn test'
+                    sh 'test'
                 }
 
             }
@@ -26,7 +26,7 @@ pipeline {
 
             steps {
                 WithMaven(maven : 'mymaven') {
-                    sh 'mvn package'
+                    sh 'package'
                 }
             }
         }
